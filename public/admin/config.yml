@@ -1,3 +1,4 @@
+local_backend: true
 backend:
   name: git-gateway
   branch: main
@@ -11,6 +12,8 @@ collections:
     label: Articles
     folder: content/articles
     create: true
+    extension: json
+    format: json
     fields:
       - { label: Title, name: title, widget: string }
       - { label: URL, name: url, widget: string }
@@ -20,14 +23,18 @@ collections:
     label: Parts
     folder: content/parts
     create: true
+    extension: json
+    format: json
     fields:
-      - { label: Vendor, name: vendor, widget: string }
+      - { label: Name, name: name, widget: string }
       - { label: URL, name: url, widget: string }
       - { label: Description, name: description, widget: text }
   - name: regattas
     label: Regattas
     folder: content/regattas
     create: true
+    extension: json
+    format: json
     fields:
       - { label: Event Name, name: name, widget: string }
       - { label: Date, name: date, widget: datetime }
