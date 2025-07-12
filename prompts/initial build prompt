@@ -1,0 +1,335 @@
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Prompt>
+  <Metadata>
+    <Title>Create a Secure, Modern Static Website for Vanguard 15 Sailors with Netlify Hosting</Title>
+    <Description>
+      A prompt to generate a secure, simple, modern, and sleek static website for Vanguard 15 sailors, providing informational articles, parts recommendations, and regatta activities. The site uses the content organization from the GitHub repository (https://github.com/southbay82/v15-sailing) as a reference, but is redesigned with a contemporary aesthetic. It is statically served via Netlify, uses GitOps for content updates via Netlify's CI/CD integration with GitHub, and supports content updates via Netlify CMS for flexibility. Assume a Netlify project is already set up for this site; include instructions to link the GitHub repository, configure the custom domain https://v-15.org, and set skipper@v-15.org as the admin.
+    </Description>
+    <Version>1.5</Version>
+    <Date>2025-07-11</Date>
+    <Author>Grok 3</Author>
+  </Metadata>
+
+  <Objective>
+    Develop a static website for Vanguard 15 sailors that is secure, intuitive, and visually appealing, serving as a hub for informational resources, parts sourcing, and regatta information. Host on Netlify with integrated CI/CD and CMS. The site must be statically served to minimize security risks, use a modern static site generator (Next.js), and support flexible content updates via GitOps and Netlify CMS, drawing content structure from the provided GitHub repository. Configure the site with the custom domain https://v-15.org and admin access for skipper@v-15.org.
+  </Objective>
+
+  <Requirements>
+    <Functional>
+      <Feature>
+        <Name>Home Page</Name>
+        <Description>
+          A landing page with a hero section featuring a high-quality image of a Vanguard 15 sailboat, a brief mission statement (e.g., "Supporting the Vanguard 15 sailing community with resources and updates"), and navigation links to Articles, Parts, Regattas, and About, mirroring the repository’s navigation.
+        </Description>
+        <Priority>High</Priority>
+      </Feature>
+      <Feature>
+        <Name>Informational Articles</Name>
+        <Description>
+          A section listing curated external article links (e.g., from Sailing World, Scuttlebutt Sailing News) with titles, URLs, and brief descriptions, categorized by topic (e.g., Techniques, Maintenance, History). Support optional markdown-based articles stored in /content/articles, as seen in the repository’s articles.md.
+        </Description>
+        <Priority>High</Priority>
+      </Feature>
+      <Feature>
+        <Name>Parts Recommendations</Name>
+        <Description>
+          A page listing vendors for Vanguard 15 parts (e.g., West Marine, APS) and sources for new/used sailboats, with vendor names, URLs, and descriptions, based on the repository’s parts.md. Include a note on contacting manufacturers for custom parts.
+        </Description>
+        <Priority>High</Priority>
+      </Feature>
+      <Feature>
+        <Name>Regatta Activities</Name>
+        <Description>
+          A page with a calendar and table of Vanguard 15 regatta events in the U.S. and worldwide, including event name, date, location, and registration links, based on the repository’s regattas.md. Source events from US Sailing, yacht clubs, and international organizations. Support updates via JSON or markdown files.
+        </Description>
+        <Priority>High</Priority>
+      </Feature>
+      <Feature>
+        <Name>About Page</Name>
+        <Description>
+          A page detailing the Vanguard 15 sailboat’s history, specifications, and the site’s mission, based on the repository’s About content. Include a contact form or email link for community feedback.
+        </Description>
+        <Priority>Medium</Priority>
+      </Feature>
+      <Feature>
+        <Name>Search Functionality</Name>
+        <Description>
+          A client-side search bar to find articles, vendors, or regatta events using a lightweight library (e.g., Lunr.js), enhancing the repository’s static content accessibility.
+        </Description>
+        <Priority>Low</Priority>
+      </Feature>
+    </Functional>
+    <NonFunctional>
+      <Requirement>
+        <Name>Security</Name>
+        <Description>
+          Serve the site over HTTPS via Netlify's CDN. Implement security headers (e.g., Content-Security-Policy: "default-src 'self';", X-Frame-Options: DENY) to prevent XSS and clickjacking. Use Netlify's built-in protections for DDoS and access control.
+        </Description>
+      </Requirement>
+      <Requirement>
+        <Name>Performance</Name>
+        <Description>
+          Optimize for fast load times with minified assets, lazy-loaded images, and Netlify's global CDN caching. Target a Lighthouse performance score of 90+ on mobile and desktop.
+        </Description>
+      </Requirement>
+      <Requirement>
+        <Name>Mobile Responsiveness</Name>
+        <Description>
+          Ensure a mobile-first design that is fully responsive across smartphones, tablets, and desktops, improving on the repository’s basic layout.
+        </Description>
+      </Requirement>
+      <Requirement>
+        <Name>Modern Design</Name>
+        <Description>
+          Use a minimalistic, sleek design with clean typography (e.g., Inter, Lato), a sailing-themed color palette (e.g., navy blue, white, sky blue), and subtle animations (e.g., hover effects). Avoid the repository’s outdated styling.
+        </Description>
+      </Requirement>
+      <Requirement>
+        <Name>Low Cost</Name>
+        <Description>
+          Leverage Netlify's free Starter plan, which includes 100 GB bandwidth/month and unlimited storage for static sites, sufficient for low-traffic (e.g., 1,000 visitors/month). Target $0/month with no overages expected.
+        </Description>
+      </Requirement>
+    </NonFunctional>
+  </Requirements>
+
+  <Implementation>
+    <TechnologyStack>
+      <Tool>
+        <Name>Next.js</Name>
+        <Purpose>Static site generator for building and exporting static HTML, CSS, and JavaScript, replacing the repository’s plain HTML setup.</Purpose>
+        <Version>15.x</Version>
+      </Tool>
+      <Tool>
+        <Name>Tailwind CSS</Name>
+        <Purpose>Utility-first CSS framework for modern, responsive styling, improving on styles.css.</Purpose>
+        <Version>3.x</Version>
+      </Tool>
+      <Tool>
+        <Name>Netlify</Name>
+        <Purpose>Host the static site with built-in CDN, HTTPS, and CI/CD. Integrate with GitHub for automated deployments. Use the custom domain https://v-15.org and set skipper@v-15.org as the admin.</Purpose>
+      </Tool>
+      <Tool>
+        <Name>Netlify CMS</Name>
+        <Purpose>Headless CMS for non-technical users to update content via a web interface, storing files in the Git repository.</Purpose>
+      </Tool>
+    </TechnologyStack>
+    <ProjectStructure>
+      <Directory>
+        <Path>/</Path>
+        <Description>Root directory of the project.</Description>
+        <Files>
+          <File>package.json</File>
+          <File>next.config.js</File>
+          <File>tailwind.config.js</File>
+          <File>.gitignore</File>
+          <File>netlify.toml</File>
+        </Files>
+      </Directory>
+      <Directory>
+        <Path>/pages</Path>
+        <Description>Next.js pages for static routes (e.g., index.js, articles.js, parts.js, regattas.js, about.js, admin.js), replacing index.html.</Description>
+      </Directory>
+      <Directory>
+        <Path>/components</Path>
+        <Description>Reusable React components (e.g., Navbar, Footer, ArticleCard, RegattaTable).</Description>
+      </Directory>
+      <Directory>
+        <Path>/content</Path>
+        <Description>JSON or markdown files for articles, parts, and regattas (e.g., articles.json, parts.json, regattas.json), matching the repository’s /content structure.</Description>
+      </Directory>
+      <Directory>
+        <Path>/public</Path>
+        <Description>Static assets like images, fonts, and favicon, expanding on the repository’s assets.</Description>
+      </Directory>
+      <Directory>
+        <Path>/static/admin</Path>
+        <Description>Netlify CMS configuration files (e.g., config.yml).</Description>
+      </Directory>
+    </ProjectStructure>
+    <ContentUpdates>
+      <Method>
+        <Name>GitOps with Netlify CI/CD</Name>
+        <Description>
+          Manage content updates via the GitHub repository (southbay82/v15-sailing). Contributors submit pull requests to update /content files (JSON or markdown). Netlify automatically builds and deploys on merge to the main branch, using the configured build command.
+        </Description>
+        <Example>
+          ```toml
+          # netlify.toml
+          [build]
+            command = "npm run build && npm run export"
+            publish = "out"
+
+          [[redirects]]
+            from = "/*"
+            to = "/index.html"
+            status = 200
+          ```
+        </Example>
+      </Method>
+      <Method>
+        <Name>Netlify CMS</Name>
+        <Description>
+          Set up Netlify CMS for non-technical users to update content via a web interface at /admin, storing changes in the Git repository (triggering Netlify deployments). Configure CMS for articles, parts, and regattas using config.yml.
+        </Description>
+        <Example>
+          ```yaml
+          # static/admin/config.yml
+          backend:
+            name: git-gateway
+            branch: main
+            repo: southbay82/v15-sailing
+          media_folder: public/images/uploads
+          public_folder: /images/uploads
+          collections:
+            - name: articles
+              label: Articles
+              folder: content/articles
+              create: true
+              fields:
+                - { label: Title, name: title, widget: string }
+                - { label: URL, name: url, widget: string }
+                - { label: Description, name: description, widget: text }
+                - { label: Category, name: category, widget: select, options: [Techniques, Maintenance, History] }
+            - name: parts
+              label: Parts
+              folder: content/parts
+              create: true
+              fields:
+                - { label: Vendor, name: vendor, widget: string }
+                - { label: URL, name: url, widget: string }
+                - { label: Description, name: description, widget: text }
+            - name: regattas
+              label: Regattas
+              folder: content/regattas
+              create: true
+              fields:
+                - { label: Event Name, name: name, widget: string }
+                - { label: Date, name: date, widget: datetime }
+                - { label: Location, name: location, widget: string }
+                - { label: Registration URL, name: url, widget: string }
+          ```
+        </Example>
+      </Method>
+    </ContentUpdates>
+    <SecurityConfiguration>
+      <Setting>
+        <Name>Netlify Security</Name>
+        <Description>
+          Leverage Netlify's automatic HTTPS, global CDN, and DDoS protection. Add custom headers in netlify.toml for security policies.
+        </Description>
+        <Example>
+          ```toml
+          # netlify.toml
+          [[headers]]
+            for = "/*"
+            [headers.values]
+              Content-Security-Policy = "default-src 'self';"
+              X-Frame-Options = "DENY"
+              X-Content-Type-Options = "nosniff"
+          ```
+        </Example>
+      </Setting>
+    </SecurityConfiguration>
+  </Implementation>
+
+  <Inspiration>
+    <Reference>
+      <Name>V15-Sailing GitHub Repository</Name>
+      <Description>
+        Use the content organization from https://github.com/southbay82/v15-sailing, including sections for Home, Articles, Parts, Regattas, and About. Replace the basic HTML/CSS design with a modern, sleek aesthetic.
+      </Description>
+      <URL>https://github.com/southbay82/v15-sailing</URL>
+    </Reference>
+    <Reference>
+      <Name>Sailing World</Name>
+      <Description>
+        Draw inspiration from Sailing World’s clean, professional layout for presenting sailing content (e.g., article previews, event tables). Simplify for a minimalistic, community-focused site.
+      </Description>
+      <URL>https://www.sailingworld.com/</URL>
+    </Reference>
+  </Inspiration>
+
+  <Constraints>
+    <Constraint>
+      <Name>Static Site</Name>
+      <Description>
+        The site must be fully static, with no server-side processing or database. Dynamic features like search must be client-side.
+      </Description>
+    </Constraint>
+    <Constraint>
+      <Name>Content Update Flexibility</Name>
+      <Description>
+        Support technical (GitOps via Netlify CI/CD) and non-technical (Netlify CMS) workflows for content updates.
+      </Description>
+    </Constraint>
+    <Constraint>
+      <Name>Cost Efficiency</Name>
+      <Description>
+        Use Netlify's free Starter plan to achieve $0/month costs for the workload.
+      </Description>
+    </Constraint>
+  </Constraints>
+
+  <Deliverables>
+    <Deliverable>
+      <Name>Static Website Source Code</Name>
+      <Description>
+        An updated GitHub repository (southbay82/v15-sailing) with a Next.js project, including pages, components, content files, netlify.toml, and Netlify CMS configuration.
+      </Description>
+    </Deliverable>
+    <Deliverable>
+      <Name>Deployment Instructions</Name>
+      <Description>
+        A README.md file with instructions to link the GitHub repository to the existing Netlify project, configure build settings (e.g., command: npm run build && npm run export, publish: out), set up the custom domain https://v-15.org (including DNS configuration), invite skipper@v-15.org as the admin/owner in Netlify, set up Netlify CMS with GitHub OAuth, and manage content updates.
+      </Description>
+    </Deliverable>
+    <Deliverable>
+      <Name>Sample Content</Name>
+      <Description>
+        Sample JSON or markdown files in /content for 5 articles, 5 parts vendors, and 5 regatta events, based on the repository’s existing content format.
+      </Description>
+    </Deliverable>
+  </Deliverables>
+
+  <SuccessCriteria>
+    <Criterion>
+      <Name>Usability</Name>
+      <Description>
+        The site is intuitive, with content accessible within 3 clicks from the homepage, improving on the repository’s navigation.
+      </Description>
+    </Criterion>
+    <Criterion>
+      <Name>Security</Name>
+      <Description>
+        The site passes a security scan (e.g., Mozilla Observatory) with an A grade, with no XSS or clickjacking vulnerabilities.
+      </Description>
+    </Criterion>
+    <Criterion>
+      <Name>Performance</Name>
+      <Description>
+        The site achieves a Lighthouse performance score of 90+ on mobile and desktop.
+      </Description>
+    </Criterion>
+    <Criterion>
+      <Name>Cost Efficiency</Name>
+      <Description>
+        Projected monthly cost of $0 using Netlify's free tier.
+      </Description>
+    </Criterion>
+    <Criterion>
+      <Name>Content Update Workflow</Name>
+      <Description>
+        Technical users can update content via pull requests, and non-technical users via Netlify CMS, with deployments completing automatically via Netlify in under 5 minutes.
+      </Description>
+    </Criterion>
+    <Criterion>
+      <Name>Domain and Admin Configuration</Name>
+      <Description>
+        The site is live at https://v-15.org, and skipper@v-15.org has full admin access in Netlify for managing the project.
+      </Description>
+    </Criterion>
+  </SuccessCriteria>
+</Prompt>
+```
