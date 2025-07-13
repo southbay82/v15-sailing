@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'sunset-orange': '#FF6B3D',
         'navy-blue': '#001F3F',
         'sky-blue': '#7FDBFF',
         'white': '#FFFFFF',
@@ -16,5 +17,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };

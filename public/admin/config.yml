@@ -12,6 +12,8 @@ collections:
     label: Articles
     folder: content/articles
     create: true
+    delete: true
+    slug: "{{slug}}"
     extension: json
     format: json
     fields:
@@ -23,6 +25,8 @@ collections:
     label: Parts
     folder: content/parts
     create: true
+    delete: true
+    slug: "{{slug}}"
     extension: json
     format: json
     fields:
@@ -33,6 +37,8 @@ collections:
     label: Regattas
     folder: content/regattas
     create: true
+    delete: true
+    slug: "{{slug}}"
     extension: json
     format: json
     fields:
