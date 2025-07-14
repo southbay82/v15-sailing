@@ -1,11 +1,9 @@
 {
   "/_app": "pages/_app.js",
-  "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
   "/": "pages/index.js",
   "/articles": "pages/articles.js",
   "/parts": "pages/parts.js",
-  "/regattas": "pages/regattas.js",
-  "/admin": "pages/admin.js",
-  "/about": "pages/about.js"
+  "/regattas": "pages/regattas.js"
 }

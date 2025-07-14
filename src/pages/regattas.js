@@ -8,7 +8,7 @@ export default function Regattas({ regattas }) {
         <title>Regattas | V-15 Sailing</title>
       </Head>
       <h1 className="text-3xl font-bold mb-6">Upcoming Regattas</h1>
-      <ul className="space-y-4">
+      <ul className="space-y-4 prose">
         {regattas.map((r) => (
           <li key={r.url} className="border p-4 rounded-md hover:bg-gray-50">
             <div className="flex justify-between items-center">

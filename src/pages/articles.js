@@ -12,7 +12,7 @@ export default function Articles({ articles }) {
       <ul className="space-y-4">
         {articles.map((a) => (
           <li key={a.url} className="border p-4 rounded-md hover:bg-gray-50">
-            <a href={a.url} target="_blank" rel="noopener" className="text-lg font-semibold text-sky-blue underline">
+            <a href={`/articles/${a.url}`} className="text-lg font-semibold text-sky-blue underline">
               {a.title}
             </a>
             <p className="text-sm text-gray-600">{a.description}</p>
