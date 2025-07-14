@@ -1,9 +1,14 @@
 {
-  "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/": "pages/index.js",
+  "/_app": "pages/_app.js",
+  "/about": "pages/about.html",
+  "/": "pages/index.html",
+  "/admin": "pages/admin.html",
   "/articles": "pages/articles.js",
+  "/articles/[slug]": "pages/articles/[slug].js",
   "/parts": "pages/parts.js",
-  "/regattas": "pages/regattas.js"
+  "/_document": "pages/_document.js",
+  "/regattas": "pages/regattas.js",
+  "/search": "pages/search.js",
+  "/404": "pages/404.html"
 }
