@@ -3,6 +3,9 @@
 rm -rf .next
 echo "deleted .next cache dir..."
 
+echo "running...npx netlify dev"
+npx netlify dev&
+
 echo "running npc run dev"
 
 NEXT_DISABLE_WEBPACK_CACHE=1

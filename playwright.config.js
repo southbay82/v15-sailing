@@ -2,7 +2,7 @@
 // Docs: https://playwright.dev/docs/test-configuration
 
 module.exports = {
-  testDir: './tests/smoke',
+  testDir: './tests',
   timeout: 30000,
   retries: 1,
   use: {
